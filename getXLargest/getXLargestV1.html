@@ -1,0 +1,48 @@
+<script src="simpletest.js"></script>
+<script>
+
+function getXLargest(array, x) {
+  var results = [];
+  var copyOfArray = array.slice();
+
+  copyOfArray.sort(function(a, b) {
+    return a - b;
+  });
+
+  for (var i = 0; i < x; i++) {
+    results.push(copyOfArray[copyOfArray.length - x + i]);
+  }
+  return results;
+}
+
+// carl style
+// function getXLargest(array, x) {
+//   var copyOfArray = array.slice();
+
+//   copyOfArray.sort(function(a, b) {
+//     return a - b;
+//   });
+
+//   return copyOfArray.slice(-x);
+
+// }
+  
+tests({
+  'It should return an array.': function() {
+    var results = getXLargest([1, 2, 3], 1);
+    eq(Array.isArray(results), true);
+  },
+  'It should return an array with a length of x.': function() {
+    var results = getXLargest([1, 2, 3], 1);
+    eq(results.length, 1);
+  },
+  'It return the x largest elements in the array in ascending order.': function() {
+    var results = getXLargest([3, 2, 1], 3);
+    eq(results.length, 3);
+    eq(results[0], 1);
+    eq(results[1], 2);
+    eq(results[2], 3);
+  },
+
+});
+</script>

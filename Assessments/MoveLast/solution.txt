@@ -1,0 +1,52 @@
+==========
+DISCUSSION
+==========
+
+Strategy 1 is simpler and harder to mess up. Each swap
+moves the last element to the left by 1. So if you swap
+x times, you'll be good. That's it!
+
+Strategy 2 works too but has more moving pieces. You
+have to do three things correctly:
+
+(a) Identify the elements to move,
+(b) perform the move, and 
+(c) insert the last element in the right spot.
+
+==========
+STRATEGY 1
+==========
+
+Summary:
+
+Swap with the left neighbor x times.
+
+Top-down outline:
+
+/* Option 1 */
+(1) lastElement = value initially at end of the array
+(2) x times:
+(3)   Swap lastElement with left neighbor
+
+/* Option 2 */
+(1) For each of the last x indices, starting at the end:
+(2)   Swap element at current index with left neighbor
+
+/* Option 3 */
+(1) For each index i, from end to (length - x):
+(2)   Swap array[i] and array[i - 1]
+
+==========
+Strategy 2
+==========
+
+Summary:
+
+Insert last element in the right place.
+
+Top-down outline:
+
+(1) lastElement = array[length - 1]
+(2) elementsToMove = x elements to immediate left of lastElement
+(3) Move elementsToMove to the right by 1.
+(4) Place lastElement in the "empty" spot.

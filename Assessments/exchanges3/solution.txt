@@ -1,0 +1,87 @@
+======================================================
+Discussion
+======================================================
+
+Considering all of the knobs before you start is crucial
+in this problem. Here are some of the main ones.
+
+  Iteration direction.
+  Starting element, ending element.
+  What values to store.
+  Sequence of assignments.
+  Number of assignments.
+
+Considering iteration direction is especially important 
+and can lead to very divergent approaches. Most students
+find strategies 1 and 2 a lot easier to understand. I
+think it's because in those strategies, we're clearly
+shifting elements to the right.
+
+Meanwhile, in strategy 3, we're doing a series of swaps.
+Specifically, we're swapping something in the array with
+something outside of the array. Since this diverges from
+the mental model of shifting elements, it takes a while
+to realize what's going on.
+
+======================================================
+Strategy 1: Start from the back
+======================================================
+
+/* Top-down outline, if you prefer iterating
+   over adjacent pairs */
+
+Create lastElement and set it to the last element.
+
+// Shift elements to the right by 1, except the last one.
+For each adjacent pair, working backwards:
+  Set right element to left element.
+
+Set the first element to lastElement.
+Return array.
+
+/* Top-down outline, if you prefer iterating
+   over elements */
+
+Create lastElement and set it to the last element.
+
+// Shift elements to the right by 1, except the last one.
+For each element except the first, working backwards:
+  Set current element to the element on the left.
+
+Set the first element to lastElement.
+Return array.
+
+/* Top-down outline, if you prefer iterating
+   over indices */
+
+Create lastElement and set it to the last element.
+
+// Shift elements to the right by 1, except the last one.
+For each index from (array.length - 1) to 1:
+  Set array[index] to array[index - 1].
+
+Set the first element to lastElement.
+Return array.
+
+======================================================
+Strategy 2: Move last element to the front
+======================================================
+
+Create `lastElement` and set it to the last element.
+Remove the last element of the array.
+Insert `lastElement` at the beginning of the array.
+Return array.
+
+======================================================
+Strategy 3: Start from the front
+======================================================
+
+Create elementToShift and set it to array[length - 1].
+
+For each index, starting from the front:
+  // Swap array[index] and elementToShift.
+  Create `savedElement` and set it to array[index].
+  Set array[index] to `elementToShift`.
+  Set `elementToShift` to `savedElement`.
+  
+Return array.

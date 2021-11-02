@@ -1,0 +1,42 @@
+Secret word: accumulate
+
+==========
+Strategy 1
+==========
+
+Summary
+
+Build up sum one term at a time
+
+Outline 
+// Establish a sum of 0 and initialize currentTerm to 1. 
+Create totalSum and set it to 0.
+Create currentTerm and set it to 1.
+
+Create term and set it to 1.
+// Compute totalSum of the first n terms.
+n times:
+  Add currentTerm to totalSum.
+  Add 2 to currentTerm.
+
+Return totalSum.
+
+Outline pros and cons
+pro: easy to follow outline 
+con: longer than the formula strategy
+
+==========
+Strategy 2
+==========
+
+Summary
+
+Square n (multiply n by itself) 
+
+Outline
+// Multiply n by itself to compute the sum of the first n terms.
+Return n * n
+
+Pros:
+You can solve this problem directly using a formula, n * n.
+The summary and outline are direct and easy to follow. The outline is efficient. 

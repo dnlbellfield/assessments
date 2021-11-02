@@ -1,0 +1,31 @@
+==========
+Discussion
+==========
+
+This was a very slight variation on previous problems
+that we've seen. Getting a concise summary is still the
+hardest part I think.
+
+=======
+SUMMARY
+=======
+
+Build up sum and then divide.
+
+================
+TOP-DOWN OUTLINE
+================
+
+Create totalSum and set to 0.
+
+// Add each grade to totalSum.
+For each grade:
+  Add grade to totalSum.
+
+Return totalSum / n.
+
+=========
+PROS/CONS
+=========
+
++ Direct and easy to follow.

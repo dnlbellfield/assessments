@@ -1,0 +1,91 @@
+<script src="simpletest.js"></script> 
+<script>
+
+/*
+strategy:
+
+Create a set for storage.
+Go through the second input array:
+  If the current array element does not exist in the map:
+    Store the element in the map.
+  Otherwise: 
+    Add the current array element to it'sexisting storage in the map.
+Go through the first input array:
+  If the map does not contain the second input array's element:
+    Return 'false'.
+  Otherwise:
+    Check the second input array's element storage in the the map 
+    to see if it includes the first input array's element.
+Return 'true'.  
+
+*/
+
+
+function containsSameElements(array1, array2) {
+  if (array1.length !== array2.length) {  // both array must be equal length, if not return false
+    return false;
+  }
+  var map = {};  // create a map for storage and loop over array2
+  for (var i = 0; i < array2.length; i++) {
+    if (!map[array2[i]]) {  // if element key does not exist in map, add key/ store the element
+      map[array2[i]] = [array2[i]];
+    } else {
+      map[array2[i]].push(array2[i]);  // if element key exists in map, add the new value to the existing array
+    }
+  }
+  for (var i = 0; i < array1.length; i++) {  // loop over the non mapped array (array 1)
+    if (!(map[array1[i]]) || Number.isNaN(array1[i]) === true) {  // if array1's element is not found
+      return false;  // or array1's element is NaN, return false
+    } else if (!map[array1[i]].includes(array1[i])) {  // check if map[array1] key includes array1's element
+      return false;
+    }
+  }
+  return true;  // return true
+}
+
+
+tests({
+  'It should compare integers.': function() {
+    var result = containsSameElements([1,2], [2,1]);
+    eq(result, true);
+  },
+  'It should compare arrays of different lengths.': function() {
+    var result = containsSameElements([1,2], [2]);
+    eq(result, false);
+  },
+  'It should compare strings, integers, and a saved object reference.': function() {
+    var oneObject = {};
+    var result = containsSameElements([1, 2, 'a', oneObject], [oneObject, 'a', 2, 1]);
+    eq(result, true);
+  },
+  'It should compare strings and integers that represent the same value.': function() {
+    var result = containsSameElements(["10", 3, 10, "3"], [10, "3", "10", 3]);
+    eq(result, true);
+  },
+  'It should compare strings and integers that represent the same value and other data types.': function() {
+    var oneObject = {};
+    var result = containsSameElements(["10", 3, oneObject, 10, "3", 'a'], ['a', oneObject, 10, "3", "10", 3]);
+    eq(result, true);
+  },
+  'It should compare multiple empty objects.': function() {
+    var result = containsSameElements([{},{}], [{},{}]);
+    eq(result, false);
+  },
+  'It should return false if an array contains NaN.': function() {
+    var result = containsSameElements([NaN], [NaN]);
+    eq(result, false);
+  },
+  'It should compare and integers that represent the same value (false example).': function() {
+    var result = containsSameElements(["10"], [10]);
+    eq(result, false);
+  },
+'It should be able to compare multiple distinct objects': function () {
+  var object1 = { 1: true};
+  var object2 = { 2: true};
+  var object3 = { 3: true};
+  var result = containsSameElements([object1, object2, object3], [object3, object2, object1]);
+  eq(result, true);
+}
+})
+
+</script>

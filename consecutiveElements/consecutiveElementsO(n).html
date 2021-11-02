@@ -1,0 +1,166 @@
+<script src="simpletest.js"></script> 
+<script>
+ 
+/*
+Strategy: 
+Create occurrenceCount and set it to 0.
+Create mostConsecutiveElements and set it to an empty container. 
+For each element in the array: 
+  Create currentElementOccurrenceCount and set it to 1.
+  While the current element is equal to the next element:
+    Increase currentElementOccurrenceCount by 1.
+  If currentElementOccurrenceCount is equal to the occurrence count
+  And mostConsecutiveElements does not contain the current element:
+    Add the current element to mostConsecutiveElements.
+  If the currentElementOccurrenceCount is greater than occurrenceCount:
+    Set occurrenceCount to currentElementOccurrenceCount.
+    Store the current elementutive element. 
+Return mostConsecutiveElements and occurrenceCount.
+*/
+
+function consecutiveOccurrences(elementArray) {
+  var occurrenceCount = 0;
+  var mostConsecutiveElements = {};
+  var currentElement;
+  var currentElementOccurrenceCount;
+
+  var storedArrayElementsMap = {};
+  for (var i = 0; i < elementArray.length; i++) {
+    storedArrayElementsMap[elementArray[i]] = 1;
+  }
+  
+  var currentElementIndex = 0;
+  var nextElementIndex = 1;
+  currentElement = elementArray[currentElementIndex];
+  var currentElementOccurrenceCount = storedArrayElementsMap[currentElement];
+
+  while (currentElement === elementArray[nextElementIndex]) {
+    currentElementOccurrenceCount = currentElementOccurrenceCount + 1;
+    currentElementIndex++;
+    nextElementIndex++;
+  
+
+    if (currentElementOccurrenceCount === occurrenceCount &&
+      !(mostConsecutiveElements.hasOwnProperty(currentElement))) {
+        mostConsecutiveElements[currentElement] = occurrenceCount; 
+      } else if (currentElementOccurrenceCount > occurrenceCount) {
+        occurrenceCount = currentElementOccurrenceCount;
+        mostConsecutiveElements = {};
+        mostConsecutiveElements[currentElement] = currentElementOccurrenceCount;
+      }
+  }
+  return mostConsecutiveElements;
+
+}
+ 
+// function consecutiveOccurrences(elementArray) {
+//   var occurrenceCount = 0;
+//   var mostConsecutiveElements = [];
+//   var currentElement;
+//   var currentElementOccurrenceCount = 1;
+
+//   var storedArrayElementsMap = {};
+//   for (var i = 0; i < elementArray.length; i++) {
+//     storedArrayElementsMap[elementArray[i]] = 1;
+//   }
+
+//   for (var i = 0; i < elementArray.length; i++) {
+//     currentElement = elementArray[i];
+//     currentElementOccurrenceCount = storedArrayElementsMap[currentElement];
+//     if (currentElement === elementArray[i + 1]) {
+//       currentElementOccurrenceCount = currentElementOccurrenceCount + 1;
+//       storedArrayElementsMap[currentElement] = currentElementOccurrenceCount;
+//     }
+//     if (currentElementOccurrenceCount === occurrenceCount &&
+//     !(mostConsecutiveElements.includes(currentElement))) {
+//       mostConsecutiveElements.push(currentElement); 
+//     } else if (currentElementOccurrenceCount > occurrenceCount) {
+//       occurrenceCount = currentElementOccurrenceCount;
+//       mostConsecutiveElements = [currentElement];
+//     }
+//   }
+
+//   return {"element": mostConsecutiveElements, 'occurrences' : occurrenceCount}
+
+// }
+
+// time: O(n^2)
+// space: O(n)
+
+// commented code
+// function consecutiveOccurrences(elementArray) {
+//   // Create occurrenceCount and set it to 0.
+//   var occurrenceCount = 0;
+//   // Create mostConsecutiveElements and set it to an empty container. 
+//   var mostConsecutiveElements = [];
+//   // For each element in the array: 
+//   for (var i = 0; i < elementArray.length; i++) {
+//     // Create currentElementOccurrenceCount  and set it to 1.
+//     var currentElement = elementArray[i];
+//     var currentElementOccurrenceCount = 1;
+//     // var nextElementIndex = i + 1;
+//     // While the current element is equal to the next element:
+//     while (currentElement === elementArray[i + 1]) {
+//       // Increase currentElementOccurrenceCount by 1.
+//       currentElementOccurrenceCount = currentElementOccurrenceCount + 1;
+//       // nextElementIndex++;
+//       i++;
+//     }
+//     // If currentElementOccurrenceCount is equal to the occurrence count
+//     // And mostConsecutiveElements does not contain the current element:
+//     if (currentElementOccurrenceCount === occurrenceCount &&
+//     !(mostConsecutiveElements.includes(currentElement))) {
+//       // Add the current element to mostConsecutiveElements.
+//       mostConsecutiveElements.push(currentElement); 
+//     } else if (currentElementOccurrenceCount > occurrenceCount) {
+//       occurrenceCount = currentElementOccurrenceCount;
+//       mostConsecutiveElements = [currentElement];
+//     }
+//   }
+//   return {"element": mostConsecutiveElements, 'occurrences' : occurrenceCount}
+
+// }
+
+ tests({
+   'It should return {element: 1, occurrences: 1} when passed [1].': function() {
+     var result = consecutiveOccurrences([1]);
+     eq(result.element, 1);
+     eq(result.occurrences, 1);
+   },
+   'It should return {element: 1, occurrences: 2} when passed [1, 1].': function() {
+     var result = consecutiveOccurrences([1, 1]);
+     eq(result.element, 1);
+     eq(result.occurrences, 2);
+   },
+   'It should return {element: 2, occurrences: 3} when passed [1, 1, 2, 2, 2].': function() {
+     var result = consecutiveOccurrences([1, 1, 2, 2, 2]);
+     eq(result.element, 2);
+     eq(result.occurrences, 3);
+   },
+   'It should work with strings and return {element: "a", occurrences: 2} when passed ["a", "a", 2, 3, 4,].': function() {
+     var result = consecutiveOccurrences(['a', 'a', 2, 3, 4,]);
+     eq(result.element, 'a');
+     eq(result.occurrences, 2);
+   },
+   'It should return multiple elements with the same occurrence frequency.': function() {
+     var result = consecutiveOccurrences(['a', 'a', 1, 1]);
+     eq(result.element[0], 'a');
+     eq(result.element[1], 1);
+     eq(result.occurrences, 2);
+   },
+   'It should not return duplicates of an element with multiple occurrences of the same count.': function() {
+     var result = consecutiveOccurrences(['a', 'a', 2, 3, 4, 'a', 'a']);
+     eq(result.element, 'a');
+     eq(result.occurrences, 2);
+   },
+   'It should return {element: 1, 2, 3 occurrences: 1} when passed [1, 2, 3].': function() {
+     var result = consecutiveOccurrences([1, 2, 3]);
+     eq(result.element[0], 1);
+     eq(result.element[1], 2);
+     eq(result.element[2], 3);
+     eq(result.occurrences, 1);
+   }
+ })
+ 
+</script>
+ 

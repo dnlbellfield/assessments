@@ -1,0 +1,64 @@
+====================================
+Strategy 1: Save all original values
+====================================
+
+/* Top-down outline */
+
+// Save all original values.
+Create originalA and set it to a.
+Create originalB and set it to b.
+Create originalC and set it to c.
+
+// Do the exchanges.
+Set a to originalC.
+Set b to originalA.
+Set c to originalB.
+
+- Easiest to follow because assignments can happen in
+  any order.
+- Stores 3 extra values.
+
+=================================
+Strategy 2: Save 1 original value
+=================================
+
+// Save one original value.
+Create originalA and set to it to a.
+
+// Do the exchanges.
+Set a to c.
+Set c to b.
+Set b to originalA.
+
+- Sequence of the assignments is tricky, making it hard
+  to follow.
+- Stores only 1 extra value.
+
+==============
+Recommendation
+==============
+"Save all original values" if you care more about 
+clarity.
+
+"Save 1 original value" if you care more about space.
+
+========
+PITFALLS
+========
+
+Awkward strategy ("save 2 original values")
+* Downsides of "save all" and "save 1" but none of the
+  upsides.
+* Would be a perplexing choice. People would be confused
+  why you made this decision and question your judgement.
+* In this case, there's an obvious thing you can vary,
+  the number of original values you store at the
+  beginning.If 2, why 1? Why not 3? What happens in each
+  case?
+
+Recommendations that don't capture tradeoffs
+* If you say "save all" is best, it doesn't capture
+  cases where memory is the limiting factor.
+* If you say "save 1" is best, it doesn't capture the
+  more common case where memory doesn't matter and
+  clarity should be prioritized.

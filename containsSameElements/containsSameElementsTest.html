@@ -1,0 +1,362 @@
+<script src="simpletest.js"></script> 
+<script>
+
+// // O(n^2) no methods
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+//   var matchCount = 0;
+//   for (var i = 0; i < array1.length; i++) {
+//     var currentElement = array1[i];
+//     for (var j = 0; j < array2.length; j++) {
+//     var compareElement = array2[j]
+//       if (currentElement === compareElement) {
+//         matchCount++;
+//         break;
+//       }
+//     } 
+//   }
+//   if (matchCount < array1.length) {
+//       return false;
+//   }
+//   return true;
+// }
+
+// // O(n^2) with includes
+// function containsSameElements(array1, array2) {
+//   for (var i = 0; i < array1.length; i++) {
+//     if (!array1.includes(array2[i]) || Number.isNaN(array2[i]) === true) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+
+
+// // old sort
+// function containsSameElements(array1, array2) {
+//   array1.sort();
+//   array2.sort();
+//   for (var i = 0; i < array1.length; i++) {
+//     if (array1[i] !== array2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+
+
+// // New sort   test: containsSameElements(["10", 3, 10, "3"], [10, "3", "10", 3]);
+
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+  
+//   var sorted1 = array1.slice();
+//   var sorted2 = array2.slice();
+//   sorted1.sort();
+//   sorted2.sort();
+
+//   for (var i = 0; i < array1.length; i++) {
+//     if (typeof sorted1[i] === 'string' && isNaN(Number(sorted1[i])) === false) {
+//       sorted1[i] = Number(sorted1[i]);
+//     }
+//     if (typeof sorted2[i] === 'string' && isNaN(Number(sorted2[i])) === false) {
+//       sorted2[i] = Number(sorted2[i]);
+//     }
+//     if (sorted1[i] !== sorted2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+  
+//   var sorted1 = array1.slice();
+//   var sorted2 = array2.slice();
+
+//   sorted1.sort(function (a,b) {
+//     if (typeof a === 'string') {
+//       return - 1;
+//     } else { 
+//       return 1;
+//     }
+//   });
+
+//   sorted2.sort(function (a,b) {
+//     if (typeof a === 'string') {
+//       return - 1;
+//     } else { 
+//       return 1;
+//     }
+//   });
+
+//   sorted1.sort()
+//   sorted2.sort()
+
+//   for (var i = 0; i < array1.length; i++) {
+//     if (sorted1[i] !== sorted2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+// // trying to map an object
+// function containsSameElements(array1, array2) {
+//   var array1ElementMap = {};
+//   for (var i = 0; i < array1.length; i++) {
+//     array1ElementMap[array1[i]] = true;
+//   }
+//   for (var i = 0; i < array1.length; i++) {
+//     if (!(array2[i] in array1ElementMap) || Number.isNaN(array1[i]) === true) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// another map attempt
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false;
+//   }
+//   var array1ElementMap = {};
+  
+//   for (var i = 0; i < array1.length; i++) {
+//     if (!array1ElementMap.hasOwnProperty(array1[i])) {
+//       array1ElementMap[array1[i]] = [array1[i]];
+//     } else {
+//       array1ElementMap[array1[i]].push(array1[i]);
+//     }
+//   }
+
+//   for (var i = 0; i < array2.length; i++) {
+//     if (!(array2[i] in array1ElementMap) || Number.isNaN(array1[i]) === true) {
+//       return false;
+//     } else if (!array1ElementMap[array2[i]].includes(array2[i])){
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+
+
+
+
+
+
+// // Map
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+//   var array1Map = new Map();
+//   for (var i = 0; i < array1.length; i++) {
+//     array1Map.set(array1[i], array1[i]);
+//   }
+//   for (var i = 0; i < array2.length; i++) {
+//     if (!(array1Map.has(array2[i])) || Number.isNaN(array2[i]) === true) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+/*
+strategy:
+Create a set for storage.              
+Go through the first input array:         
+  Store the elements in the set.         
+Go through the second input array:
+  If the set does not contain the second input array's element:
+    Return 'false'.
+Return 'true'.  
+*/
+
+// set - following MDN
+function containsSameElements(array1, array2) {
+  if (array1.length !== array2.length) {
+    return false;
+  }
+
+  var array1Set = new Set();
+  for (var i = 0; i < array1.length; i++) {
+    array1Set.add(array1[i]);
+  } 
+
+  for (var i = 0; i < array2.length; i++) {
+    if (!(array1Set.has(array2[i]))) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+// set - not using add()
+function containsSameElements(array1, array2) {
+  if (array1.length !== array2.length) {
+    return false;
+  }
+
+  var array1Set = new Set(array1);
+  for (var i = 0; i < array2.length; i++) {
+    if (!(array1Set.has(array2[i]))) {
+      return false;
+    }
+  }
+  
+  return true;
+}
+
+
+
+
+
+
+
+// // my attempt at Carl's implementation 
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+//   var array1MappedElements = {};
+//   // loop over array1 and map it's elements. 
+//   for (var i = 0; i < array1.length; i++) {
+//     // If the element has not been mapped, map it as a key
+//     // and add the element *wrapped in an array* as the key's value.
+//     // Otherwise, push the element to the array that exists in the map.
+//     if (!array1MappedElements[array1[i]]) {
+//       array1MappedElements[array1[i]] = [array1[i]];
+//     } else {
+//       array1MappedElements[array1[i]].push(array1[i]);
+//     }
+//   }
+//   for (var i = 0; i < array2.length; i++) {
+//     // If array2's element is not found in the map, 
+//     // or the element is NaN return false.
+//     if (!array1MappedElements[array2[i]] || Number.isNaN(array2[i])) {
+//       return false;
+//       // Otherwise
+//       // array1: [1, "1"] is mapped as ==> array1MappedElements: { 1: [1, "1"] }
+//       // becasue array1MappedElements[* string interpretation *].push(* actual value *);
+//       // Use includes to see if array1MappedElements[array2[i]]'s array includes array2[i]
+//     } else if (!array1MappedElements[array2[i]].includes(array2[i])) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// // sort with JSON
+// function containsSameElements(array1, array2) {
+//   if (array1.length !== array2.length) {
+//     return false
+//   }
+  
+//   var sorted1 = array1.slice();
+//   var sorted2 = array2.slice();
+
+//   sorted1.sort(function (a, b) {
+//     if (typeof a === 'object') {
+//       a = JSON.stringify(a);
+//     }
+//     if (typeof b === 'object') {
+//       b = JSON.stringify(b);
+//     }
+//     if (a[2] && b[2]) {
+//       return a[2] - b[2];
+//     } 
+//     if (typeof a === 'string') {
+//       return - 1;
+//     } else { 
+//       return 1;
+//     }
+//   });
+
+//   sorted2.sort(function (a, b) {
+//     if (typeof a === 'object') {
+//       a = JSON.stringify(a);
+//     }
+//     if (typeof b === 'object') {
+//       b = JSON.stringify(b);
+//     }
+//     if (a[2] && b[2]) {
+//       return a[2] - b[2];
+//     } 
+//     if (typeof a === 'string') {
+//       return - 1;
+//     } else { 
+//       return 1;
+//     }
+//   });
+
+//   sorted1.sort()
+//   sorted2.sort()
+  
+//   for (var i = 0; i < array1.length; i++) {
+//     if (sorted1[i] !== sorted2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+tests({
+  'It should compare integers.': function() {
+    var result = containsSameElements([1,2], [2,1]);
+    eq(result, true);
+  },
+  'It should compare arrays of different lengths.': function() {
+    var result = containsSameElements([1,2], [2]);
+    eq(result, false);
+  },
+  'It should compare strings, integers, and a saved object reference.': function() {
+    var oneObject = {};
+    var result = containsSameElements([1, 2, 'a', oneObject], [oneObject, 'a', 2, 1]);
+    eq(result, true);
+  },
+  'It should compare strings and integers that represent the same value.': function() {
+    var result = containsSameElements(["10", 3, 10, "3"], [10, "3", "10", 3]);
+    eq(result, true);
+  },
+  'It should compare strings and integers that represent the same value and other data types.': function() {
+    var oneObject = {};
+    var result = containsSameElements(["10", 3, oneObject, 10, "3", 'a'], ['a', oneObject, 10, "3", "10", 3]);
+    eq(result, true);
+  },
+  'It should compare multiple empty objects.': function() {
+    var result = containsSameElements([{},{}], [{},{}]);
+    eq(result, false);
+  },
+  'It should compare NaN.': function() {
+    var result = containsSameElements([NaN], [NaN]);
+    eq(result, false);
+  },
+  'It should compare and integers that represent the same value (false example).': function() {
+    var result = containsSameElements(["10"], [10]);
+    eq(result, false);
+  },
+'It should be able to compare multiple distinct objects': function () {
+  var object1 = { 1: true};
+  var object2 = { 2: true};
+  var object3 = { 3: true};
+  var result = containsSameElements([object1, object2, object3], [object3, object2, object1]);
+  eq(result, true);
+}
+})
+
+</script>

@@ -1,0 +1,47 @@
+==========
+Discussion
+==========
+
+Coming up with a strategy here was relatively easy. The
+hard part was recognizing that the broader goal is to
+examine adjacent pairs, not elements or indices.
+
+=======
+SUMMARY
+=======
+
+Check that each adjacent pair is ascending.
+
+==========================
+TOP-DOWN OUTLINE, OPTION A
+==========================
+
+/* Abstract outline */
+
+For each adjacent pair, (left, right):
+  If left > right, return false.
+Return true.
+
+==========================
+TOP-DOWN OUTLINE, OPTION B
+==========================
+
+/* If you prefer more detail, and want
+   to iterate over elements */
+
+// Check each adjacent pair.
+For each element except the last:
+  If element > (element to the right), return false.
+Return true.
+
+==========================
+TOP-DOWN OUTLINE, OPTION C
+==========================
+
+/* If you want even more detail, you can
+   iterate over indices */
+
+// Check each adjacent pair.
+For each index except the last:
+  If array[index] > array[index + 1], return false.
+Return true.

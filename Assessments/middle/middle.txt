@@ -1,0 +1,24 @@
+/*
+You're given a sorted array of integers. Devise a way to compute the median.
+
+Try to generate at least one reasonable strategy. For each strategy:
+
+Write a summary and computational outline.
+Explain the pros and cons.
+ 
+
+Summary: Find middle by array length.
+
+Outline:
+ 
+If array.length is even:
+  // Find the two middle elements and return their average.
+  Create middleLeftPosition and set it to (array.length / 2) - 1.
+  Create middleRightPosition and set it to (array.length / 2).
+  Return (array[middleLeftPosition] + array[middleRightPosition]) / 2.
+
+Otherwise if array.length is odd:
+  // Find the single middle element.
+  Create middle and set it to (array.length - 1) / 2.
+  Return array[middle].
+  

@@ -1,0 +1,96 @@
+=======
+Problem
+=======
+
+You’re given an array that contains two distinct integers. Devise a
+way to ensure that the array is sorted in ascending order.
+
+=====================================
+Step 1: Develop reasonable strategies
+=====================================
+
+In such a simple problem, there is really only one reasonable
+strategy. If the array is already ascending, we do nothing. If it
+isn’t, we swap the elements.
+
+================================================
+Step 2: Choose a strategy based on your criteria
+================================================
+
+We only have one!
+
+======================================================
+Step 3: Create a top-down description of your strategy
+======================================================
+
+Directly from step 1:
+
+If ascending:
+  Do nothing
+If not ascending:
+  Swap elements
+
+You may note that the first branch is optional. The following is
+equivalent.
+
+If not ascending:
+  Swap elements
+
+You could add more detail below the first instruction “If not
+ascending” like so. Note that “If not ascending” is prefixed by
+“//”. This is to signal that this line says something about the
+instruction directly below, similar to a code comment.
+
+// If not ascending
+If array[0] > array[1]:
+  Swap elements
+
+Some students may wish to add more detail about the swap. Note that
+“Swap elements” has been replaced with “// Swap elements by storing
+one original value”. This is because this line says something about
+what is happening directly below. It has changed from an instruction
+to a comment. In this case, the last three lines all share a common
+goal, denoted by the comment.
+
+// If not ascending
+If array[0] > array[1]:
+  // Swap elements by storing one original value
+  originalFirst = array[0]
+  array[0] = array[1]
+  array[1] = originalFirst
+
+To get a sense of how important the comments are, consider a world
+without them.
+
+If array[0] > array[1]:
+  originalFirst = array[0]
+  array[0] = array[1]
+  array[1] = originalFirst
+
+This code is pretty simple, so it’s not too bad, but in order to get
+the gist of what’s going on, you’d essentially have to produce the
+comments in your head. The dialogue might go something like this:
+
+“Oh okay, array[0] > array[1], that means the array is in descending
+order, which isn’t what we want. So if that happens, if it’s not
+ascending, we need to do something. Okay, hmmm what’s going on with
+originalFirst, let me see... oh so they’re trying to swap the
+elements and originalFirst is just there so we don’t lose one of the
+values, okay I get it now.”
+
+By just writing the comments in, you completely short-circuit this
+process and ensure that people will understand exactly what is
+happening with minimum effort.
+
+======================
+Step 4: Implementation
+======================
+
+Implementation is trivial.
+
+// If not ascending
+if (array[0] > array[1]):
+  // Swap elements by storing one original value
+  originalFirst = array[0];
+  array[0] = array[1];
+  array[1] = originalFirst;

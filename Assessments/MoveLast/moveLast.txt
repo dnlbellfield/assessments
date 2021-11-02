@@ -1,0 +1,219 @@
+notes for submission
+
+Outline:
+
+// Save the last element.
+Create lastElement and set it to the last element in the array. 
+
+// Find the place to move the last element.
+Create finalPosition and set it to (array.length - 1) - x. 
+
+// Make room for the last element.
+Create secondToLastPosition and set it to array.length - 2.
+For each element from secondToLastPosition down to finalPosition:
+  // Move element 1 place to the right.
+  Increase element position by 1.
+
+// Move the last element 'x places to the left'.
+Set array[finalPosition] to lastElement.
+
+Return array.
+
+When x = 1 and array = [1, 2, 3], the array should become [1, 3, 2].
+
+[1, 2, 3]
+
+lastElement = 3
+finalPosition = 3 - 1 - 1 = 1
+secondToLastPosition = 3 - 2 = 1
+
+
+I would create a looping condition that visits each element from secondToLastPosition down to finalPosition.
+For each element from secondToLastPosition to finalPosition, take the current elements position and increase it by one. 
+
+for (var i = secondToLastPosition; i >= finalPosition; i--) {
+  array[i] = array[i - 1]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+You're given an array of integers and an integer, x, where 0 < x < array.length. 
+Devise a way to move the last element x places to the left.
+
+For example:
+
+When x = 1 and array = [1, 2, 3], the array should become [1, 3, 2].
+When x = 2 and array = [1, 2, 3], the array should become [3, 1, 2].
+
+
+Summary:
+
+Make a copy of the last element.
+
+Outline:
+
+// Save the last element.
+Create lastElement and set it to the last element in the array. 
+
+// Find the place to move the last element.
+Create finalPosition and set it to (array.length - 1) - x. 
+
+// Make room for the last element.
+Create secondToLastPosition and set it to array.length - 2.
+For each element from secondToLastPosition down to finalPosition:
+  Move element 1 place to the right.
+
+// Move the last element x places to the left.
+Set array[finalPosition] to lastElement.
+
+Return array.
+
+
+
+
+
+Move x number of elements one place to the right and the last element x places to the left. 
+Shift the elements from  (array.length - 1) - x 
+
+Assign a copy of the last element after moving elements >= x one place to the right.
+Save the last element. 
+Move elements >= x one place to the right
+
+Move the elements >= x one place to the right, set a copy of the last element  x places to the left
+and set it x places to the left
+
+
+
+When x = 1 and array = [1, 2, 3], the array should become [1, 3, 2].
+
+array = [1, 2, 3] x = 1 
+lastElement = array[array.length - 1];
+lastElement = 3
+finalPosition = 3 - 1 = 2 - x
+finalPosition =  2 - 1
+finalPosition = 1
+array[finalPosition] = 
+finalPosition = array[1] 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+save a reference to the last element, and move it left  
+x > 0
+x < array.length
+
+x can be 1 to (array.length - 1)
+
+For example:
+
+When x = 1 and array = [1, 2, 3], the array should become [1, 3, 2].
+When x = 2 and array = [1, 2, 3], the array should become [3, 1, 2].
+                       [ 3, 1,2] 
+x can be 1 to (array.length - 1)
+
+when moving the last element x places to the left,
+how do you treat the other elements?
+
+
+Outline:
+// Locate the place to move the last element.
+Create finalPosition and set it to array.length - x. 
+
+// Move the last element x places to the left.
+move elements x to (array.length - 1) 1 place to the right.
+move the last element to finalPosition.
+
+move the last element x places to the left.
+set the value of x to a saved reference of the last element.  
+
+Summary:
+
+Save the original value of the last element.
+
+Outline:
+
+// Save the last element.
+Create lastElement and set it to the last element in the array. 
+
+// Find the place to move the last element.
+Create finalPosition and set it to (array.length - 1) - x. 
+
+// Make room for the last element.
+Create secondToLastPosition and set it to array.length - 2.
+For each element from secondToLastPosition down to finalPosition:
+  Move element 1 place to the right.
+
+// Move the last element 'x places to the left'.
+Set array[finalPosition] to lastElement.
+
+Return array.
+
+Summary:
+
+Save the last element and move it x places to the left after 
+shifting the elements in between one place to the right.
+
+Move the elements between the last element - x  and the last element to the right one place 
+and move a copy of the last element x place to the left. 
+
+Move the last element x places to the left and the elements in between one place to the right.
+
+Save a copy of the last element.
+Make room for the last element.
+Move the elements from the last to the last - x one place to the right.
+Move the copy of the last element x places to the left. 
+
+Save a copy of the last element, make room for it, and move it x places to the left. 
+
+
+
+
+
+
+// Make room for the last element.
+Create secondToLastPosition and set it to array.length - 2.
+For each element from secondToLastPosition down to finalPosition:
+  // Move element 1 place to the right.
+  Increase 
+
+
+// Make room for the last element.  
+Create secondToLastPosition and set it to array.length - 2.
+Starting from secondToLastPosition down to  
+Create firstToShift and set it to finalPosition
+Create lastToShift and set it to array.length - 2.
+From firstToShift lastToShift
+
+// Make room for the last element.
+Create secondToLastPosition and set it to array.length - 2.
+For each element from secondToLastPosition down to finalPosition:
+  // Move element 1 place to the right.
+  Increase element position by 1.
+
+When x = 1 and array = [1, 2, 3], the array should become [1, 3, 2].
+[1, 2, 3]

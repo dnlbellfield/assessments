@@ -1,0 +1,67 @@
+==========
+Discussion
+==========
+
+We should be able to use pretty much the same approach
+we used for the sequence (1, 2, 3, ...). The only
+difference is that computing each term is slightly more
+involved. Take a moment to really see how similar the
+problems are.
+
+To me they are substantively identical. If it doesn't
+feel that way to you, more reflection is needed.
+Noticing when problems are the same is a superpower
+because it will allow you to exploit your past
+experience.
+
+My slight preference is for the first outline. The
+reason is that I don't need to think about how each term
+is built up over time. The initialization logic is also a
+lot simpler.
+
+Whichever you prefer, it's important that you are able
+to see the problem from all angles. That way all
+perspectives will be available to you in future
+problems.
+
+=======
+SUMMARY
+=======
+
+Build up sum one term at a time.
+
+================
+TOP-DOWN OUTLINE
+================
+
+/* If you prefer to compute each term separately */
+
+Create totalSum and set to 0.
+
+// Compute each term separately
+// and add it to totalSum.
+For each integer i, from 1 to n:
+  Add (2i - 1) to totalSum.
+
+Return totalSum.
+
+/* If you prefer to compute each term via accumulation */
+
+Create totalSum and set to 0.
+Create currentTerm and set to 1.
+
+// Compute each term via accumulation
+// and add to totalSum.
+n times:
+  Add currentTerm to totalSum.
+  Add 2 to currentTerm.
+
+Return totalSum.
+
+=========
+PROS/CONS
+=========
+
++ Simple and easy to follow.
+- As noted previously, this will be much slower than using a
+  direct formula.

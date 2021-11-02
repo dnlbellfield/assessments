@@ -1,0 +1,67 @@
+Summary: Record number of grades greater than or equal to 50.
+
+Computational Outline:
+Create numberOfPassingStudents and set it to 0.
+For each student grade in grades:
+  If student grade >= 50:
+    Increase numberOfPassingStudents by 1.
+Return numberOfPassingStudents.
+
+Pro: You only need to track the number of grades of 50 or greater once with one variable, a counter. 
+
+
+
+
+What is studentGradeArray?
+DanielBellfield
+20h
+I named the input array studentGradeArray for my own reference. I can change it to array to keep it simple and similar to the example from the newer iteration video.
+gordonzhu
+20h
+Huh? What's array?
+Slow down and think about what I'm actually saying. You don't understand what I'm saying.
+DanielBellfield
+20h
+studentGradeArray is the name I gave the input array. The input array is an array of  students exam scores.
+The name studentGradeArray could be renamed and changed to studentScoreArray. studentScoreArray is a more accurate name for the array.
+gordonzhu
+2h
+Where does the problem state that the grades are in an array?
+DanielBellfield
+59m
+The problem does not state that the grades are in an array. I interpreted the 'set' from 'You're given a set of n grades'  as an array with grades. So that was a mistake on my part.
+I dropped 'Array' from studentGradeArray. 
+The outline currently reads 'For each student grade in studentGrades:'
+gordonzhu
+32m
+It would be better to just use the language in the question, "grades". So you'd have "For each grade in grades:".
+There's no point of saying student.
+DanielBellfield
+20m
+I agree. I can see how adding extra details led me into less correct thinking/ understanding.
+
+
+This doesn't really get at the main idea.
+It's just restating the objective.
+Take another shot at it.
+DanielBellfield
+22m
+main point: recording number of grades greater than or equal to 50.
+gordonzhu
+21m
+Can you figure out  a way to capture the iterative nature of the solution?
+DanielBellfield
+17m
+Is this something you want me to capture  and express in the summary? Or is this something you want me to be able to see in general. Expressing iteration is difficult for me.
+Like, do you want me to say " In one pass record number of grades greater than or equal to 50'
+
+This would be better than what you have now. Notice how I do it in the solution.
+DanielBellfield
+22h
+Ok. I am a little confused. I will take note of how you do it in the solution but I currently haven't passed this assessment so I am unable to see how you do it in the solution. I will update my variable naming in my outline.
+gordonzhu
+22h
+No need to do anything, just notice how I name numberOfPassingStudents in my solution after you pass.
+DanielBellfield
+22h
+got it.

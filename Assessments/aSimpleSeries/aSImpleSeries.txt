@@ -1,0 +1,17 @@
+Secret word: progression
+
+Summary: Add n terms to a running sum. 
+
+Outline: 
+
+// Establish a sum to add terms to. 
+Create sum and set it to 0.
+
+// Compute sum of the first n terms.
+For each integer from 1 to n:
+  Add integer to sum.
+
+// Return sum of first n terms.  
+Return sum.
+
+

@@ -1,0 +1,65 @@
+==========
+Discussion
+==========
+
+I wanted you to solve this iteratively, so that you
+could get practice describing iterative processes. Some
+of you will note that you can also solve this problem
+directly using the formula (n(n + 1))/2. In practice,
+the formula is superior because it will run much faster.
+To see what I mean, implement both strategies and plug
+in increasingly large values for n.
+
+There are two main ways to think about this problem,
+which are substantively identical. I've included
+outlines for both approaches. I don't think it really
+matters which you prefer, but in case you're wondering,
+I prefer option 1. There are fewer things to keep track
+of, which makes it easier to hold in my head.
+
+Regardless of your preference, it's important that you
+are able to see the problem from both angles. This is
+because in other related problems, one angle may be much
+more illuminating.
+
+=======
+SUMMARY
+=======
+
+Build up sum one term at a time.
+
+================
+TOP-DOWN OUTLINE
+================
+
+/* Option 1, a little simpler. Fewer variables, less
+   to do in each iteration. */
+
+Create totalSum and set to 0.
+
+// Add first n terms to totalSum.
+For each integer from 1 to n:
+  Add integer to totalSum.
+
+Return totalSum.
+
+/* Option 2, if you want to focus the attention
+   on `currentTerm` */
+
+Create totalSum and set to 0.
+Create currentTerm and set to 1.
+
+// Add first n terms to totalSum.
+n times:
+  Add currentTerm to totalSum.
+  Add 1 to currentTerm.
+
+Return totalSum.
+
+=========
+PROS/CONS
+=========
+
++ Simple and easy to follow.
+- As noted in the discussion, this will be much slower than using a
+  direct formula.

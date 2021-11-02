@@ -1,0 +1,60 @@
+==========
+DISCUSSION
+==========
+
+Given all of the constraints of the problem, you must
+quickly realize that the main knob is your choice of
+mathematical operator. 
+
+Strategically, if you start from the simplest ones
+(addition and subtraction) you’ll quickly get your first
+working answer.
+
+If you continue to turn the knob and try multiplication
+and division, you see that it’s more complicated because
+you have to special case the situation where you might
+divide by 0.
+
+=======
+SUMMARY
+=======
+
+Add and subtract
+
+================
+TOP-DOWN OUTLINE
+================
+
+// Store both numbers in a.
+Set a to a + b.
+
+// Set b to a’s original value.
+Set b to a - b.
+
+// Set a to b’s original value.
+Set a to a - b.
+
+====================
+PROOF OF CORRECTNESS
+====================
+
+Assume a = i, where i is an integer.
+Assume b = j, where j is an integer.
+
+After the first step, “Set a to a + b”,
+a = i + j
+
+After the second step, “Set b to a - b”,
+b = (i + j) - j
+b = i 
+
+After the third step, “Set a to a - b”,
+a = (i + j) - i
+a = j
+
+=========
+PROS/CONS
+=========
+
+* It works!
+* Not realistic I guess?

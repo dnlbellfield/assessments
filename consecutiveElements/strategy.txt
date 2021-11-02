@@ -1,0 +1,31 @@
+Strategy: 
+Create mostConsecutiveOccurrences and set it to 0.
+Create mostConsecutiveElements and set it to an empty container. 
+For each element in the array: 
+  Create currentElementOccurrences and set it to 1.
+  While the current element is equal to the next element:
+    Increase currentElementOccurrences by 1.
+    Move the next element position over one spot to the right.
+  If currentElementOccurrences is equal to mostConsecutiveOccurrences
+  And mostConsecutiveElements does not contain the current element:
+    Add the current element to mostConsecutiveElements.
+  If currentElementOccurrences is greater than mostConsecutiveOccurrences:
+    Set mostConsecutiveOccurrences to currentElementOccurrences.
+    Set mostConsecutiveElements to the current element. 
+Return mostConsecutiveElements and mostConsecutiveOccurrences. 
+
+strategy:
+Create greatestConsecutiveOccurrence and set it to 0.
+Create greatestConsecutiveElements and set it to an empty list.
+For each element in the array:
+  Set the current element occurrence count to 1.
+  If the next element is equal to the current element:
+    Increase the current element occurrence by 1.
+    Set next element to the element after next element.
+  If the current element occurrence is equal to greatestConsecutiveOccurrence
+  And the current element is not in greatestConsecutiveElements:
+    Add currentElement to greatestConsecutiveElements.
+    If the current element occurrence is greater than greatestConsecutiveOccurrence:
+      Set mostConsecutiveOccurrences to currentElementOccurrences.
+      Set mostConsecutiveElements to the current element. 
+Return mostConsecutiveElements and mostConsecutiveOccurrences. 

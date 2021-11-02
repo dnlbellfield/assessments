@@ -1,0 +1,22 @@
+
+go through the array 
+  compare two adjacent values, if (a > b):
+    swap a and b 
+repeat until sorted
+return array 
+
+
+
+
+
+
+create isSorted and set it to false
+go through the array 
+  set isSorted to true
+  compare two adjacent values, if (a > b):
+    swap a and b
+    set isSorted to false
+
+repeat until isSorted is true 
+return array 
+

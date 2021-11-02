@@ -1,0 +1,17 @@
+Mental cues for top-down outlines
+A component can be a set of lines, a single line, or part of a line. For every component in your description, consider the following:
+
+Mental cues for structure:
+
+Is it at the right level? (child, sibling, parent)
+Is it part of a broader goal?
+Mental cues for correctness:
+
+Is it unambiguous?
+Is it true?
+Is it possible?
+Taken together, do all the steps always lead to a correct result for all valid inputs?
+Mental cues for clarity:
+
+Is it necessary to get a correct result? If not, could we delete it?
+Is it expressed in the simplest way possible?

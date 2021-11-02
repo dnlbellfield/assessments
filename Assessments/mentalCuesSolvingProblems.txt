@@ -1,0 +1,10 @@
+Mental cues for solving problems
+You must consider a lot of things when problem-solving. Because this seems so open-ended, it can quickly feel like an impossible task. The adept problem-solver must take concrete actions to counteract this. Our approach is simple. We will maintain a specific set of mental cues that might help us make progress.
+
+What are all of the "knobs" (things you can vary)? How can we turn each knob? How is each knob connected? Put another way, how can we metaphorically hold the problem in our hand and inspect it from every possible angle?
+Observation/discovery cycle. What are all the observations you can make about the problem at various points? Do those observations lead to any “discoveries”?
+Draw. Use pen and paper so that you have more freedom to express the problem.
+Use specific examples to make the problem concrete.
+Are there other approaches? What are all of the tradeoffs? Are they better in at least one way?
+What exactly makes something better or worse? How can we "raise our preferences above the level of personal tastes to choices that have a technical justification"? (from Dijkstra).
+Is this similar to other problems I've seen? What are the related problems and how similar are they? Are there insights from problems I can reuse, or reuse with modifications?

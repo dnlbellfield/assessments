@@ -1,0 +1,13 @@
+Secret word: mean
+
+Summary:
+Sum grade scores, divide the sum by number of grades.
+
+Computational Outline:
+Create gradeSum and set it to 0.
+For each grade in grades:
+  Add grade to gradeSum.
+Return gradeSum divided by number of grades.
+
+Pro:
+A benefit of this strategy is having a space complexity of O(1) constant space. This only has to use one variable in memory, gradeSum.

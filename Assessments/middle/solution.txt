@@ -1,0 +1,38 @@
+==========
+Discussion
+==========
+
+In this problem, simpler is better. The simplest
+solution I am aware of uses division, addition, and
+subtraction. Some students wanted to work with
+decimals. The problem is that decimals must be rounded
+to a whole number before they can be used. Thus, the
+decimal becomes an intermediate "waste" product.
+
+=======
+SUMMARY
+=======
+
+Handle even and odd lengths separately.
+
+================
+TOP-DOWN OUTLINE
+================
+
+If array.length is odd:
+  // Return middle number.
+  middleIndex = (array.length - 1) / 2
+  return array[middleIndex]
+  
+If array.length is even:
+  // Return average of middle pair.
+  middleLeftIndex = (array.length / 2) - 1
+  middleRightIndex = middleLeftIndex + 1
+  return (array[middleLeftIndex] + array[middleRightIndex]) / 2
+
+=========
+PROS/CONS
+=========
+
++ Uses simple arithmetic (/ and +).
++ Clearly separates two major cases.

@@ -1,0 +1,30 @@
+==========
+Discussion
+==========
+
+The aim was to give you a simple problem where you can get
+practice with the summary and top-down outline.
+
+=======
+SUMMARY
+=======
+
+Add 1 for each passing grade.
+
+================
+TOP-DOWN OUTLINE
+================
+
+Create passCount and set to 0.
+
+// Add 1 for each passing grade.
+For each grade:
+  If grade >= 50, add 1 to passCount.
+
+Return passCount.
+
+=========
+PROS/CONS
+=========
+
++ As simple as it gets.

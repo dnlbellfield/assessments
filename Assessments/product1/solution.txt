@@ -1,0 +1,32 @@
+==========
+Discussion
+==========
+
+Accumulating a product (building up a product one
+multiplication at a time) is very similar to
+accumulating a sum, which we've seen before.
+
+=======
+SUMMARY
+=======
+
+Accumulate product
+
+=====================
+TOP-DOWN OUTLINE
+=====================
+
+factorial = 1
+
+If n > 0:
+  // Multiply factorial by integers 1 to n.
+  For each integer i, from 1 to n:
+    factorial = factorial * i
+
+Return factorial
+
+=========
+PROS/CONS
+=========
++ Clear, simple.
+- Could be more explicit about the n = 0 case.

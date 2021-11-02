@@ -1,0 +1,30 @@
+https://replit.com/@watchandcode/less0110greater-Move-Last-DanielBellfield?from=notifications#submission1.txt
+
+==========
+Strategy 1
+==========
+
+Summary:
+
+Save the last element, make room for it, then move it x places to the left. 
+
+Outline:
+
+// Save the last element.
+Create lastElement and set it to the last element in the array. 
+
+// Find the place to move the last element.
+Create finalPosition and set it to (array.length - 1) - x. 
+
+// Make room for the last element.
+Create index and set it to array.length - 2.
+x times:
+  // Move the element at index 1 place to the right
+  Set array[index + 1] to array[index].
+  Decrease index by 1.
+
+// Move the last element 'x places to the left'.
+Set array[finalPosition] to lastElement.
+
+Return array.
+

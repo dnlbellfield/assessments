@@ -1,0 +1,43 @@
+targetWord = 'fish'
+
+Find the place in the dictionary ( letter in the alphabet) to start looking for ‘targetWord’
+Go through targetWord letter-by-letter to match a word in the dictionary.
+Does this combination of letters (targetWord) exist as a word in the dictionary?
+
+find firstLetter, the first letter of targetWord.
+go to first word of the firstLetter section of dictionary.
+  look for the word with the first letter and the next letter.  
+  repeat for the remaining letters in the targetWord.
+if  every letter matches the target word:
+  return true
+otherwise:
+  return false
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Find the place in the dictionary to start looking for 'targetWord'
+Find firstLetter, the first letter of targetWord ==> 'f'
+
+// Go through targetWord letter-by-letter to match a word in the dictionary.
+Go to first word of the firstLetter section of dictionary ==> 'f' section 
+  Look for the word with the first letter and the next letter.  'fi', 'fis', fish' 
+  Repeat for the remaining letters in the targetWord.
+
+// Does this combination of letters (targetWord) exist as a word in the dictionary?
+If  every letter matches the target word:
+  Return true.
+Otherwise:
+  Return false.

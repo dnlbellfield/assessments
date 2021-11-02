@@ -1,0 +1,231 @@
+<script src="simpletest.js"></script> 
+<script>
+
+
+
+
+
+
+/*
+Strategy v1: 
+Create mostConsecutiveOccurrences and set it to 0.
+Create mostConsecutiveElements and set it to an empty container. 
+For each element in the array, skipping elements as indicated below...: 
+  Create currentElementOccurrences and set it to 1.
+  Do the following while the current element is equal to the next element:
+    Increase currentElementOccurrences by 1.
+    Move the next element position over one spot to the right.
+  If currentElementOccurrences is equal to mostConsecutiveOccurrences
+  and mostConsecutiveElements does not contain the current element:
+    Add the current element to mostConsecutiveElements.
+  If currentElementOccurrences is greater than mostConsecutiveOccurrences:
+    Set mostConsecutiveOccurrences to currentElementOccurrences.
+    Set mostConsecutiveElements to the current element. 
+Return mostConsecutiveElements and mostConsecutiveOccurrences.
+
+
+Strategy v2: 
+Create mostConsecutiveOccurrences and set it to 0.
+Create mostConsecutiveElements and set it to an empty container. 
+Start with the first element as the current element: 
+  Create currentElementOccurrences and set it to 1.
+  Do the following when the current element the same as the next element:
+    Increase currentElementOccurrences by 1.
+    // Move the next element pointer position over one spot to the right.
+    // (or) Increase next element position by 1.
+    // (or) Update the position of next element and move it over one spot to the right.
+  If currentElementOccurrences is greater than mostConsecutiveOccurrences:
+    Record results.
+
+Return mostConsecutiveElements and mostConsecutiveOccurrences.
+
+
+Strategy v3: 
+Create mostConsecutiveOccurrences and set it to 0.
+Create mostConsecutiveElements and set it to an empty container. 
+Starting with the first element as the 'currentElement': 
+  Create currentElementOccurrences and set it to 1.
+  Compare 'currentElement' to 'nextElement', the element to the right of 'currentElement'.
+  Do the following when the 'currentElement' is the same as the 'nextElement':
+    Increase currentElementOccurrences by 1.
+    Update the position of nextElement by moving it over one spot to the right (if possible).
+  If currentElementOccurrences is greater than mostConsecutiveOccurrences:
+    Record results.
+  'currentElement' should assume the position of 'nextElement'.  
+Return mostConsecutiveElements and mostConsecutiveOccurrences.
+
+
+Strategy v4:
+Create maxOccurrences and set it to 0.
+Starting with the first element of the array, compare the current element to the next element in the array:
+  If they are the same:
+    Increase the occurrence count of the current element.
+    Update the next element position.
+  Compare the occurence count to maxOccurrences.
+    Record the results.
+  The current element should assume the position of 'nextElement'.  
+  (or) Set the position of current element to next element's position
+Return the element with the maxOccurrence count and the occurrence count. 
+
+
+
+
+
+strategy v5:
+Create maxOccurrences and set it to 0.
+Go through the array:
+  For each current element, compare the current element to the next element.
+  If they are the same:
+    Increase the occurrence count of the current element.
+    Move the next element position over one spot to the right.
+  Compare the occurrence count to maxOccurrences.
+    Record the results.
+  The current element's position should assume the position of next element.  
+Return the element with the maxOccurrence count and the occurrence count. 
+
+
+
+strategy v6:
+Create maxOccurrences and set it to 0.
+Go through the array:
+  For each current element(an unvisited element), compare the current element to the next element.
+  If they are the same:
+    Increase the occurrence count of the current element.
+    Update the position of next element.
+  Compare the occurrence count to maxOccurrences.
+    Record the results.
+  Set current element's position to next element's position
+Return the element with the maxOccurrence count and the occurrence count. 
+
+
+startegy v7: carl style
+Go through the array
+  Track occurrences of elements. 
+Return the element(s) with most consecutive occurrences and the occurrence count.
+
+
+
+Track occurrences of elements. Return the element(s) with most consecutive occurrences and the occurrence count.
+
+notes: 
+whats missing? whats missing? under do it and add just enough under order to eat just enough
+rewrite 19. do not use set
+line 15: 
+For each element in the input, skipping elements as indicated below...
+
+*/
+ 
+
+
+
+
+function consecutiveOccurrences(elementArray) {
+  var mostConsecutiveOccurrences = 0;
+  var mostConsecutiveElements = [];
+  
+  for (var i = 0; i < elementArray.length; i++) {                   
+    var currentElement = elementArray[i];
+    var currentElementOccurrences = 1;
+    while (currentElement === elementArray[i + 1]) {
+      currentElementOccurrences = currentElementOccurrences + 1;
+      i++;
+    }
+
+    if (currentElementOccurrences === mostConsecutiveOccurrences &&
+    !(mostConsecutiveElements.includes(currentElement))) {           
+      mostConsecutiveElements.push(currentElement);   
+    } else if (currentElementOccurrences > mostConsecutiveOccurrences) {
+      mostConsecutiveOccurrences = currentElementOccurrences;
+      mostConsecutiveElements = [currentElement];
+    }
+
+  }
+  return {"element": mostConsecutiveElements, 'occurrences' : mostConsecutiveOccurrences}
+}
+
+
+
+
+
+// time: O(n^2)
+// space: O(n)
+
+//  if/else failed
+function consecutiveOccurrences(elementArray) {
+  var mostConsecutiveOccurrences = 0;
+  var mostConsecutiveElements = [];
+  var previousCurrentElement;
+  for (var i = 0; i < elementArray.length; i++) {                   
+    var currentElement = elementArray[i];
+    var currentElementOccurrences = 1;
+    if (currentElement === elementArray[i + 1]) {
+      currentElementOccurrences = currentElementOccurrences + 1;
+      if (currentElementOccurrences === mostConsecutiveOccurrences &&
+        !(mostConsecutiveElements.includes(currentElement))) {           
+        mostConsecutiveElements.push(currentElement);   
+      } else if (currentElementOccurrences > mostConsecutiveOccurrences) {
+        mostConsecutiveOccurrences = currentElementOccurrences;
+        mostConsecutiveElements = [currentElement];
+      }
+      i++;
+      continue;
+    } else {
+      if (currentElementOccurrences === mostConsecutiveOccurrences &&
+        !(mostConsecutiveElements.includes(currentElement))) {           
+        mostConsecutiveElements.push(currentElement);   
+      } else if (currentElementOccurrences > mostConsecutiveOccurrences) {
+        mostConsecutiveOccurrences = currentElementOccurrences;
+        mostConsecutiveElements = [currentElement];
+      }
+
+      currentElementOccurrences = 1;
+    }
+  
+  }
+  return {"element": mostConsecutiveElements, 'occurrences' : mostConsecutiveOccurrences}
+}
+
+
+ tests({
+   'It should return {element: 1, occurrences: 1} when passed [1].': function() {
+     var result = consecutiveOccurrences([1]);
+     eq(result.element, 1);
+     eq(result.occurrences, 1);
+   },
+   'It should return {element: 1, occurrences: 2} when passed [1, 1].': function() {
+     var result = consecutiveOccurrences([1, 1]);
+     eq(result.element, 1);
+     eq(result.occurrences, 2);
+   },
+   'It should return {element: 2, occurrences: 3} when passed [1, 1, 2, 2, 2].': function() {
+     var result = consecutiveOccurrences([1, 1, 2, 2, 2]);
+     eq(result.element, 2);
+     eq(result.occurrences, 3);
+   },
+   'It should work with strings and return {element: "a", occurrences: 2} when passed ["a", "a", 2, 3, 4,].': function() {
+     var result = consecutiveOccurrences(['a', 'a', 2, 3, 4,]);
+     eq(result.element, 'a');
+     eq(result.occurrences, 2);
+   },
+   'It should return multiple elements with the same occurrence frequency.': function() {
+     var result = consecutiveOccurrences(['a', 'a', 1, 1]);
+     eq(result.element[0], 'a');
+     eq(result.element[1], 1);
+     eq(result.occurrences, 2);
+   },
+   'It should not return duplicates of an element with multiple occurrences of the same count.': function() {
+     var result = consecutiveOccurrences(['a', 'a', 2, 3, 4, 'a', 'a']);
+     eq(result.element, 'a');
+     eq(result.occurrences, 2);
+   },
+   'It should return {element: 1, 2, 3 occurrences: 1} when passed [1, 2, 3].': function() {
+     var result = consecutiveOccurrences([1, 2, 3]);
+     eq(result.element[0], 1);
+     eq(result.element[1], 2);
+     eq(result.element[2], 3);
+     eq(result.occurrences, 1);
+   }
+ })
+ 
+</script>
+ 

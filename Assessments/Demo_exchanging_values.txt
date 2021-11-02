@@ -1,0 +1,195 @@
+=======
+Problem
+=======
+
+You have two variables, a and b. Devise a way to exchange their
+values.
+
+=====================================
+Step 1: Develop reasonable strategies
+=====================================
+
+Let’s consider a specific example. If we start with a = 10 and
+b = 20, we need to get to an end state where a = 20 and b = 10.
+
+Naively, let’s consider what happens if we do the following:
+
+    /* Strategy 1 */
+    Set a to b.
+    Set b to a.
+
+Now both a = 20 and b = 20. The problem is that we're losing a’s
+original value. To resolve that issue, we could store it separately.
+Since we're solving the problem by storing one value separately,
+let's add that information at the top. These changes lead to the
+following revision.
+
+    /* Strategy 1, store one original value */
+    Create originalA and set to a.
+    Set a to b.
+    Set b to originalA.
+
+We’ve found our first working strategy. Now let’s try to see if
+there are others. It’ll be useful to examine all of the knobs
+(things we can vary) in the problem.
+
+Knob 1: Which value we store separately.
+Knob 2: How we order the reassignments.
+Knob 3: How many values we store separately.
+
+With knob 1, which value we store separately doesn’t matter. So
+turning this knob has no effect. With knob 2, as far as we can tell
+at the moment, the reassignments must happen in a specific order. For
+example, if we had the following:
+
+    /* Strategy 1, with last two steps switched */
+    Create originalA and set to a.
+    Set b to originalA.
+    Set a to b.
+
+We’d get (a = 10, b = 10). So we can't turn knob 2 without breaking
+things. With knob 3, we’ve seen what happens if we store 1 value
+separately, but we could also store 2. How could that change things?
+Sometimes it’s hard to tell until you try it out.
+
+    /* Strategy 2, store all original values */
+    Create originalA and set to a.
+    Create originalB and set to b.
+    Set a to originalB.
+    Set b to originalA.
+
+There are more steps with this approach, but it’s immediately
+obvious that it’ll work because the reassignments (last two lines)
+don’t need to happen in any specific order. This was not true with
+strategy 1.
+
+The obvious downside is that this approach will take more memory. A
+less obvious one is that it does unnecessary work, which can
+potentially be confusing.
+
+================================================
+Step 2: Choose a strategy based on your criteria
+================================================
+
+Both working strategies are quite reasonable. If we care more about
+conserving memory, choose strategy 1. If we care more about clarity,
+choose strategy 2. For demonstration purposes, we'll create top-down
+descriptions for both.
+
+======================================================
+Step 3: Create a top-down outline
+======================================================
+
+We'll do strategy 1 first. As a starting point, we’ll use our work
+from the previous step.
+
+    /* Strategy 1, store one original value */
+    Create originalA and set to a.
+    Set a to b.
+    Set b to originalA.
+
+We’ll use the mental cues for top-down descriptions to refine our
+work. First, we’ll consider the mental cues for structure. Asking
+ourselves, “what is the broader goal?” leads to the following:
+
+    /* Strategy 1, store one original value */
+    
+    // Store originalA so its value is not lost.
+    Create originalA and set to a.
+    
+    // Do first half of the exchange.
+    Set a to b.
+    
+    // Do second half of the exchange.
+    Set b to originalA.
+
+Since the last two lines share a broader goal, we’ll group them
+under a single comment.
+
+    /* Strategy 1, Store one original value */
+    
+    // Store originalA so its value is not lost.
+    Create originalA and set to a.
+    
+    // Do the exchange.
+    Set a to b.
+    Set b to originalA.
+
+Luckily, we already saw the main idea of this strategy in the
+previous step ("Store one original value"). This captures the main
+idea and differentiates this strategy against others.
+
+We should also go through the mental cues for correctness and
+clarity in case there are any issues. In this case, we can easily
+verify that our strategy is correct. On the clarity side, there are
+no obvious improvements we can make.
+
+==================================================================
+    
+Let's go through the same process for strategy 2. As a starting
+point, we’ll use our work from the previous step.
+
+    /* Strategy 2, store all original values */
+    Create originalA and set to a.
+    Create originalB and set to b.
+    Set a to originalB.
+    Set b to originalA.
+
+We’ll use the mental cues for top-down descriptions to refine our
+work. First, we’ll consider the mental cues for structure. Asking
+ourselves, “what is the broader goal?” leads to the following:
+
+    /* Strategy 2, store all original values */
+
+    // Store a's original value.
+    Create originalA and set to a.
+    // Store b's original value.
+    Create originalB and set to b.
+    
+    // Do first half of the exchange.
+    Set a to originalB.
+    // Do second half of the exchange.
+    Set b to originalA.
+    
+Next, we'll group lines that share a common goal.
+
+    /* Strategy 2, store all original values */
+
+    // Store all original values.
+    Create originalA and set to a.
+    Create originalB and set to b.
+    
+    // Do the exchange.
+    Set a to originalB.
+    Set b to originalA.
+  
+Conveniently, we already have a summary from the last step "store
+all original values", so we're done. Again, we should also work
+through the mental cues for correctness and clarity in case there
+are any issues. In this case we can easily verify correctness and
+it's difficult to imagine how we could be more clear.
+
+======================
+Step 4: Implementation
+======================
+
+    /* Strategy 1, store one original value */
+     
+    // Store a's original value so it's not lost.
+    var originalA = a;
+    
+    // Do the exchange.
+    a = b;
+    b = originalA;
+    
+==================================================================    
+
+    /* Strategy 2, store all original values */
+    
+    // Store all original values.
+    var originalA = a;
+    var originalB = b;
+    
+    // Do the exchange.
+    a = originalB;
+    b = originalA;
