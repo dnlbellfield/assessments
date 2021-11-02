@@ -1,0 +1,7 @@
+Given a positive integer x, determine if there exists a non-negative integer n, where n! = x.
+
+Generate at least one reasonable strategy. For each one:
+
+Write a summary and top-down outline.
+Explain any pros and cons.
+If there are multiple reasonable strategies, make a recommendation that might help someone choose between them.
