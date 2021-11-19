@@ -1,0 +1,121 @@
+
+<h1>Outline</h1>
+
+<p>Create divisor and set it to 1.</p>
+<p>Create result and let it be undefined.</p>
+  <p>// check if 'n' exists by deconstructing n! </p>
+    <p>x amount of times:</p>
+      <p> // divide x by divisor and check if the result is === 1 </p>
+        <p> result = x / divisor.</p>
+          <p> If result === 1:</p>
+            <p>  // a non-negative integer 'n' exists. 'n' === divisor.</p>
+              <p> return true.</p>
+                <p>Increase divisor by 1.</p>  
+                  <p>return false.</p>
+
+<script>
+/*
+Gordon (11/8/21)
+  Do NOT reply until you've thought through every angle. 
+  Keep in mind that you are on a reduced code review schedule. 
+  I'm limiting you to as little as 1/week until I see you put more care into your work.
+  I have to repeat this question because you refused to answer it and instead went on a series of unrelated tangents. 
+  What are the issues with the following? 
+
+  x times:
+    x = x / divisor
+
+Daniel (INSERT_DATE)
+Issues:
+1. I am using one variable 'x' to represent two different pieces of data. 
+  'x' is being used to represent a number of iterations and 'x' is also being used to store the results of (x / divisor). 
+  This is an issue because: 
+    a. 'x'  should be used to represent a specific number of iterations. Changing / reassigning "x's" value to something other than its intended value leads to unwanted results.
+    b. Saying 'x times:' is not truthful because "x's" value / the number of iterations can be altered by "x = x / divisor".
+
+2. It is confusing. It can be written much clearer. Here I am trying to reuse 'x' instead of creating a new variable to store the results of (x / divisor). 
+Reusing 'x' makes the outline harder to read / understand. Seeing a lot of "x's" on the page is confusing.
+
+Notes: 
+How the state of 'x' changes ( unwanted behavior)
+1. original state - x's original value is used to represent the number of times to iterate.
+2. reassigned - x's original value changes. 'x' is now used to store the result of x / divisor.
+
+
+
+======================================
+DO NOT CHANGE ANYTHING BELOW THIS LINE
+======================================
+
+Summary: 
+
+Deconstruct x one division at a time.
+
+Outline:
+
+Create divisor and set it to 1.
+// divide x by all whole numbers from 1 to x.  
+x times:
+  Create result and set it to x / divisor.
+  // check if the updated value of result === 1.
+  If result === 1:
+    // 'n' exists, when result === 1, n === divisor.
+    return true.
+  Increase divisor by 1.  
+return false.
+
+
+
+*/
+function product2(x) {
+  var divisor = 1;
+  
+  for (var i = 0; i <= x; i++) {
+    // divide x by divisor. 
+    x = x / divisor;
+    if (x === 1) {
+      // a non-negative integer 'n' exists. 'n' === divisor.
+      console.log('n  :', divisor)
+      return true;
+    }
+    divisor++;
+  }
+
+  return false;
+}
+
+// slow DOESNT WORK 
+function product2(x) {
+  var divisor = 1;
+  // 'x' times update result and check if result === 1
+  for (var i = 0; i <= x; i++) {
+    var result = x / divisor;
+    if (result === 1) {
+      // a non-negative integer 'n' exists. 'n' === divisor.
+      return true;
+    }
+    divisor++;
+  }
+
+  return false;
+}
+
+
+// fast this works
+function product2(x) {
+  var divisor = 1;
+  // 'x' times update 'x' and check if 'x'' === 1
+  for (var i = 0; i <= x; i++) {
+    x = x / divisor;
+    if (x === 1) {
+      // a non-negative integer 'n' exists. 'n' === divisor.
+      return true;
+    }
+    divisor++;
+  }
+
+  return false;
+}
+
+</script>
+

@@ -1,7 +1,59 @@
-Given a positive integer x, determine if there exists a non-negative integer n, where n! = x.
+Given a positive integer x, determine if there exists a 
+non-negative integer n, where n! = x.
 
 Generate at least one reasonable strategy. For each one:
 
 Write a summary and top-down outline.
 Explain any pros and cons.
-If there are multiple reasonable strategies, make a recommendation that might help someone choose between them.
+If there are multiple reasonable strategies, 
+make a recommendation that might help someone choose between them.
+
+past example: 
+product 1:  Accumulating a product (building up a product one multiplication at a time).
+note: n!, is the product of all positive integers less than or equal to n.
+summary: Accumulate product.
+
+product 2: Deconstruct a factorial. 
+note: n, is the division of all the positive integers less than or equal to n.
+
+Summary: 
+
+Deconstruct a product / factorial one division at a time.
+
+Outline:
+
+Create divisor and set it to 1.
+// check if 'n' exists by deconstructing x. 
+x times:
+  // update x to (x / divisor) then check if the result === 1.
+  x = x / divisor.
+  If x === 1:
+    // a non-negative integer 'n' exists, 'n' === divisor.
+    return true.
+  Increase divisor by 1.  
+return false.
+
+function product2(x) {
+  var divisor = 1;
+  // check if 'n' exists by deconstructing x. x = n! 
+  for (var i = 0; i <= x; i++) {
+    // divide x by divisor. check if x === 1 
+    x = x / divisor;
+    if (x === 1) {
+      // a non-negative integer 'n' exists. 'n' === divisor.
+      console.log(' n === divisor :', divisor)
+      return true;
+    }
+    divisor++;
+  }
+
+  return false;
+}
+
+x
+if x = n!
+then x times 
+result = x / divisor          divisor is initially 1, then 2, cont.. until x
+if result === 1:
+  return true
+return false
