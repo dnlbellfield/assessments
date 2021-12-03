@@ -57,3 +57,32 @@ result = x / divisor          divisor is initially 1, then 2, cont.. until x
 if result === 1:
   return true
 return false
+
+
+
+
+
+
+####################################################################
+
+Outline:
+
+Create divisor and set it to 1.
+// divide x by all whole numbers from 1 to x.  
+x times:
+  Create result and set it to x / divisor.
+  // check if the updated value of result === 1.
+  If result === 1:
+    // 'n' exists, when result === 1, n === divisor.
+    return true.
+  Increase divisor by 1.  
+return false.
+
+
+
+##############################################################
+
+  x = 120
+  divisor = 1
+  result = x / divisor 
+  result = 120

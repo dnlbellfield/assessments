@@ -1,0 +1,7 @@
+You’re given an array of numbers. Devise a method for finding the maximum.
+
+You must generate at least one reasonable strategy. For each strategy:
+
+Write a summary and top-down outline.
+Explain any pros and cons.
+If there are multiple strategies, make recommendations that might help someone choose between them.
